@@ -1,0 +1,566 @@
+<!-- Header Components -->
+<div style="background-color:azure;overflow-x: hidden;overflow-y: hidden;" >
+<div class="nav">
+    <app-login-header></app-login-header>
+</div>
+<!-- Home page contents -->
+<div class="row main ">
+  <!--Profile info For Staff -->
+    <div class="col-sm-3 profile-grp" *ngIf=details.staff >
+        <div class="profile-info">
+          <div class="profile-sidebar">
+              <div class="profile-userpic">
+                <img src={{details.ProfileImage}} class="img-responsive" alt="">
+              </div>
+              <div class="profile-usertitle">
+                  <div class="profile-usertitle-name">
+                      {{details.Name}}
+                  </div>
+                  <div class="profile-usertitle-job">
+                    {{details.category}}
+                  </div>
+              </div>
+              <div class="profile-userbuttons" >
+                <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Profile Edit" data-toggle="modal" data-target="#profileEdit">
+                    <i class="fa fa-pencil-square-o"></i>
+                </button>
+                <button type="button" class="btn btn-info" (click)="logOut()" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                  <i class="fa fa-power-off" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                  <label>Email Id:</label>
+                  {{details.Email}}<!-- {{Name}} -->
+                </div>
+                <div class="profile-usertitle-name">
+                  <label>Phone No:</label>
+                  {{details.Phone}}<!-- {{Phone}} -->
+                </div>
+              </div>
+        </div>
+     </div>
+    </div>
+    <!-- Profile info for student -->
+    <div class="col-sm-3 profile-grp" *ngIf=details.student >
+      <div class="profile-info">
+        <div class="profile-sidebar">
+            <!-- SIDEBAR USERPIC -->
+            <div class="profile-userpic">
+                <img src={{details.ProfileImage}} class="img-responsive" alt="">
+            </div>
+            <!-- END SIDEBAR USERPIC -->
+            <!-- SIDEBAR USER TITLE -->
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">
+                    {{details.Name}}
+                </div>
+                <div class="profile-usertitle-job">
+                  {{details.category}}
+                </div>
+            </div>
+            <!-- END SIDEBAR USER TITLE -->
+            <!-- SIDEBAR BUTTONS -->
+            <div class="profile-userbuttons" >
+              <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Profile Edit" data-toggle="modal" data-target="#profileEdit">
+                  <i class="fa fa-pencil-square-o"></i>
+              </button>
+              <button type="button" type="submit" (click)="logOut()" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- END SIDEBAR BUTTONS -->
+            <div class="profile-usertitle">
+              <div class="profile-usertitle-name">
+                <label>Email Id:</label>
+                {{details.Email}}<!-- {{Name}} -->
+              </div>
+              <div class="profile-usertitle-name">
+                <label>Phone No:</label>
+                {{details.Phone}}<!-- {{Phone}} -->
+              </div>
+            </div>
+      </div>
+   </div>
+  </div>
+
+  <!-- Profile info for College -->
+  <div class="col-sm-3 profile-grp" *ngIf=details.college >
+    <div class="profile-info">
+      <div class="profile-sidebar">
+          <!-- SIDEBAR USERPIC -->
+          <div class="profile-userpic">
+            <img src={{details.ProfileImage}} class="img-responsive" alt="">
+
+          </div>
+          <!-- END SIDEBAR USERPIC -->
+          <!-- SIDEBAR USER TITLE -->
+          <div class="profile-usertitle">
+              <div class="profile-usertitle-name">
+                  {{details.collegeName}}
+              </div>
+              <div class="profile-usertitle-job">
+                {{details.category}}
+              </div>
+          </div>
+          <!-- END SIDEBAR USER TITLE -->
+          <!-- SIDEBAR BUTTONS -->
+          <div class="profile-userbuttons" >
+            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Profile Edit" data-toggle="modal" data-target="#profileEdit">
+                <i class="fa fa-pencil-square-o"></i>
+            </button>
+            <button type="button" class="btn btn-info" (click)="logOut()" data-toggle="tooltip" data-placement="bottom" title="Logout">
+              <i class="fa fa-power-off" aria-hidden="true"></i>
+            </button>
+          </div>
+          <!-- END SIDEBAR BUTTONS -->
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+              <label>Email Id:</label>
+              {{details.Email}}<!-- {{Name}} -->
+            </div>
+            <div class="profile-usertitle-name">
+              <label>College Code:</label>
+              {{details.collegeCode.toUpperCase()}}<!-- {{Phone}} -->
+            </div>
+          </div>
+    </div>
+ </div>
+
+</div>
+
+<div class="col-sm-5 content" data-spy="scroll">
+    <!-- College Options -->
+    <div class="row profile-head" >
+      <div class="row search">
+        <form style="margin-bottom: 5px;border-radius: 20%;" #searchForm=ngForm (ngSubmit)="search(searchForm)">
+          <label><b>Search here </b></label>
+          <input type="text" id="seac" #name=ngModel [(ngModel)]=details.searchText name=searchText>
+          <button class="btn btn-primary searchb" type="reset" data-toggle="tooltip" data-placement="bottom" title="Clear Search"><i class="fa fa-times" aria-hidden="true" (click)="clearSearch()"></i></button>
+          <button type="submit" class="btn btn-primary searchb" data-toggle="tooltip" data-placement="bottom" title="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form><br>
+      </div>
+    </div>
+    <div>
+      <div class="row filter">
+        <form #filterForm=ngForm (ngSubmit)="filter(filterForm)">
+          <label >Filter Posts</label>
+          <select name="filter" #name=ngModel [(ngModel)]="details.filter">
+            <option value="None" selected >Select</option>
+            <option value="all" selected >All</option>
+            <option value="cultural">Cultural</option>
+            <option value="sports">Sports</option>
+            <option value="placement">Placement</option>
+            <option value="fdp">FDP</option>
+          </select>
+          <button type="submit" class="btn btn-primary searchf" data-toggle="tooltip" data-placement="bottom" title="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>    
+      </div>
+    </div>
+    <div class="row post-text" style="padding-bottom: 10px;" *ngIf=details.college>
+      <div class="profile-top row" *ngIf=details.college>
+        <b><strong>Post Your Events Here..!</strong></b>
+      </div>
+        <button type="button" data-toggle="modal" data-target="#postModal" class="btn btn-picture">
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+          <span>Photo</span>
+        </button>
+      <br>
+    </div>
+    <!-- Student options -->
+    <div class="row post-text" style="padding-bottom: 10px;" *ngIf=details.student>
+      <div class="profile-top row" *ngIf=details.student>
+        <b><strong>Upload Your Talents</strong></b>
+    </div>
+      <button type="button" data-toggle="modal" data-target="#studentModal" class="btn btn-picture">
+        <i class="fa fa-picture-o" aria-hidden="true"></i>
+        <span>Photo</span>
+      </button>
+      <br>
+    </div>
+
+    <!-- Staff options -->
+
+    <div class="row post-text" style="padding-bottom: 10px;" *ngIf=details.staff>
+      <div class="profile-top row" *ngIf=details.staff>
+        <b><strong>Upload Your PPT/PDF</strong></b>
+      </div>
+      <button type="button" data-toggle="modal" data-target="#staffModal" class="btn btn-picture">
+        <i class="fa fa-picture-o" aria-hidden="true"></i>
+        <span>PDF</span>
+      </button>
+      <br/>
+      <br/>
+    </div>
+    <div class="justify-content-center">
+      <h5><strong> Type: {{details.selFilter}}</strong></h5>
+    </div>
+    <div class="line-divider">
+      <!-- <span class="line"></span> -->
+    </div>
+    <div class="line-divider" style="margin-top: 2px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    
+    <div class="scroll" *ngIf=!details.search>
+    <div class="info-container" *ngFor="let cnts of cnts;index as i">    
+      <div class="row user-pics" (click)=viewProfile(i)>
+        <div class="col-sm-2 profile-userpic">
+          <img src={{profiles[i]}}  class="img-responsive profile" alt="No Dp" style="width: 40px;height: 45px;">
+        </div>       
+        <div class="col title">
+          <span>{{names[i]}}</span>
+          <div class="row time">
+            <span>{{date[i]}}&nbsp;</span>
+            <span> at </span>
+            <span>&nbsp;{{time[i]}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row " style="margin-left: 15px;">
+        <p>{{title[i]}}</p>
+      </div>
+      <div class="row img-section">
+        <div class="col">
+        <owl-carousel [options]="homeSlider" [carouselClasses]="['owl-theme','customClassName']">
+          <div class="item" *ngFor="let img of posts[i]">
+            <img src="{{img}}" width="538px" height="400px">
+          </div>
+        </owl-carousel>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div *ngIf=details.search>
+    <div class="scroll" *ngFor="let cnts of id;index as i">
+      <div class="info-container">    
+      <div class="row user-pics">
+        <div class="col-sm-2 profile-userpic">
+          <img src={{profile}} class="img-responsive profile" alt="No Dp" style="width: 40px;height: 45px;">
+        </div>       
+        <div class="col title">
+          <span>{{nam}}</span>
+          <div class="row time">
+            <span>{{date[i]}}&nbsp;</span>
+            <span> at </span>
+            <span>&nbsp;{{time[i]}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row " style="margin-left: 15px;">
+        <p>{{title[i]}}</p>
+      </div>
+      <div class="row img-section">
+        <div class="col">
+        <owl-carousel [options]="homeSlider" [carouselClasses]="['owl-theme','customClassName']">
+          <div class="item" *ngFor="let img of posts[i]">
+            <img src="{{img}}" width="538px" height="400px">
+          </div>
+        </owl-carousel>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4 events" *ngIf="!details.viewProfile" >
+      <div class="profile-top" style="margin-left: 80px;">
+        <b><strong style="font-size: x-large;">Student Talents/Special </strong>
+          <strong style="margin-left: 22%;font-size: x-large;">Attractions</strong>
+        </b>
+      </div>
+      <br/>
+      <div class="line-divider1">
+        <!-- <span class="line"></span> -->
+      </div>
+      <div class="line-divider1" style="margin-top: 2px;">
+        <!-- <span class="line"></span> -->
+      </div>
+      <div class="info-container1" *ngFor="let cnts of cntsStudent;index as i">    
+        <div class="row user-pics1">
+          <div class="col-sm-2 profile-userpic">
+            <img src={{profileStudent[i]}} class="img-responsive profile1" alt="hello">
+          </div>
+          <div class="col title">
+            <span>{{namesStudent[i]}}</span>
+            <div class="row time">
+              <span>{{timeStudent[i]}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row " style="margin-left: 15px;">
+          <p>{{titleStudent[i]}}</p>
+        </div>
+        <div class="row img-section">
+          <div class="col">
+          <owl-carousel [options]="homeSlider" [carouselClasses]="['owl-theme','customClassName']">
+            <div class="item" *ngFor="let img of postStudent[i]">
+              <img src="{{img}}">
+            </div>
+          </owl-carousel>
+        </div>
+        </div>
+      </div>
+      <!-- View Profile -->
+      
+    </div>
+    <div class="col-sm-4 events" *ngIf="details.viewProfile">
+    <div class="profile-top" style="margin-left: 80px;">
+      <b><strong style="font-size: x-large;">Account Information
+        <i class="fa fa-times" (click)="backToStudent()" data-toggle="tooltip" data-placement="bottom" title="Cancel" style="margin-left: 50px;cursor: pointer;color: rgb(131, 123, 123);"></i>
+      </strong>
+      </b>
+    </div>
+    <br/>
+    <div class="profile-usertitle-view">
+            <div class="profile-usertitle-name-view">
+                {{nam}}
+            </div>
+          <div class="profile-userpic-view">
+            <img src={{profile}} class="img-responsive" alt="">
+          </div>
+              <b><label>Email Id:</label>
+              {{email}}<!-- {{Name}} --><br/>
+              <label>College Code:</label>
+              {{code}}<br/><!-- {{Phone}} -->
+              <label>Contact Number:</label>
+              {{contact}}<!-- {{Name}} --><br/>
+              <label>Principle Email-Id:</label>
+              {{princi}}<!-- {{Name}} --><br/>
+              </b>
+    </div>
+    <div class="info-contain" >    
+      <div class="row" >
+        <h4 style="color: red;">!--------------------Posts-------------------!</h4>
+        <div class="container" *ngIf="enlarge">
+          <span class="closebtn">
+          <i (click)="remove()" style="cursor: pointer;margin-left:400px;padding-bottom: 5px;" class="fa fa-times" data-toggle="tooltip" data-placement="bottom" title="Close"></i>
+          </span>
+          <br/>
+          <img src={{view}} style="width:100%">
+          <div id="imgtext"></div>
+        </div>
+        <div class="column" *ngFor="let imgs of postStudent;index as cnt;">
+          <img src={{imgs}} alt="Nature" style="width:100%" (click)="myFunction(imgs);">
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+<!-- Modals Goes Here -->
+
+<!-- 1. Profile Edit -->
+<div class="modal fade" id="profileEdit" tabindex="-1" role="dialog" aria-labelledby="#profileEditTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Profile Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Stafff -->
+      <div class="modal-body" *ngIf=details.staff>
+        <form #updateForm="ngForm" (ngSubmit)="onUpdate()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" value={{details.Name}} #name=ngModel name="Name" [(ngModel)]="details.Name">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Email</label>
+            <input type="text" readonly class="form-control" value={{details.Email}} #name=ngModel name="Email" [(ngModel)]="details.Email">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Phone Number</label>
+            <input type="text" class="form-control"  value={{details.Phone}} #name=ngModel name="PhoneNumber" [(ngModel)]="details.Phone">
+          </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Profile Photo</label>
+              <input type="file" class="form-control-file" name="productImage" required (change)="createFormData($event)" id="exampleFormControlFile1">
+            </div>
+            <div class="modal-footer">
+              <!-- <input type="submit" value=<i class="fa fa-times" aria-hidden="true"></i> > -->
+              <button type="button"  class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button type="button" type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </form>
+      </div>
+      <!-- Student -->
+      <div class="modal-body" *ngIf=details.student>
+        <form #updateForm="ngForm" (ngSubmit)="onUpdate()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" value={{details.Name}} #name=ngModel name="Name" [(ngModel)]="details.Name">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Email</label>
+            <input type="text" readonly class="form-control" value={{details.Email}} #name=ngModel name="Email" [(ngModel)]="details.Email">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">USN</label>
+            <input type="text" readonly class="form-control"  value={{details.Usn}} >
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">College Name</label>
+            <input type="text" class="form-control"  value={{details.collegeName}} #name=ngModel name="collegeName" [(ngModel)]="details.collegeName">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Phone Number</label>
+            <input type="text" class="form-control"  value={{details.Phone}} #name=ngModel name="PhoneNumber" [(ngModel)]="details.Phone">
+          </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Profile Photo</label>
+              <input type="file" class="form-control-file" required (change)="createFormData($event)" id="exampleFormControlFile1">
+            </div>
+            <p>Update Status:{{messages.ErrorMessage}}</p>
+            <div class="modal-footer">
+              <button type="button"  class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button type="button" type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </form>
+      </div>
+      <!-- College -->
+      <div class="modal-body" *ngIf=details.college>
+        <form #updateForm="ngForm" (ngSubmit)="onUpdate()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="formGroupExampleInput">College Name</label>
+            <input type="text"  class="form-control" value={{details.collegeName}} #name=ngModel name="collegeName" [(ngModel)]="details.collegeName">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">Email Id</label>
+            <input type="text" readonly class="form-control" value={{details.Email}} >
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">College Code</label>
+            <input type="text" readonly class="form-control"  value={{details.collegeCode}}>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput2">Contact No</label>
+            <input type="text"  class="form-control"  value={{details.Phone}}  #name=ngModel name="Phone" [(ngModel)]="details.Phone">
+          </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Profile Photo</label>
+              <input type="file"  class="form-control-file" required (change)="createFormData($event)" id="exampleFormControlFile1">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+              <button type="button" type="submit" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post Image Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">Upload Your Files</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form #addPost="ngForm" (ngSubmit)="onPost()" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Select Post Category</label>&nbsp;
+                <select name="filter" #name=ngModel [(ngModel)]="details.filter">
+                <option value="None" disabled >Select</option>
+                <option value="all" selected >All</option>
+                <option value="cultural">Cultural</option>
+                <option value="sports">Sports</option>
+                <option value="placement">Placement</option>
+                <option value="fdp">FDP</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Add Your Posts Here..</label>
+              <input type="file" multiple  class="form-control-file" name="postImages" required (change)="createPost($event)" id="exampleFormControlFile1">
+            </div>
+            <!-- Progress Bar -->
+            
+            <!--  -->
+            <div class="form-group">
+              <label for="formGroupExampleInput">Description</label>
+              <input type="text" class="form-control"  #name=ngModel name="Title" [(ngModel)]="details.Title">
+            </div>
+
+          <div class="modal-footer">
+            <button type="button" type="reset" class="btn btn-secondary" >Reset</button>
+            <button type="button" type="submit"  class="btn btn-primary">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Staff posts -->
+<div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staffModalLabel">Post Your PDF</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form #addPost="ngForm" (ngSubmit)="onPostStaff()" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Drop Your Files Here..</label>
+              <input type="file" multiple  class="form-control-file" name="postPDF" required (change)="createPostStaff($event)" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Give A Label For Files</label>
+              <input type="text" class="form-control"  #name=ngModel name="Label" [(ngModel)]="details.Label">
+            </div>
+          <div class="modal-footer">
+            <button type="button" type="reset"  class="btn btn-secondary" >Reset</button>
+            <button type="button" type="submit"  class="btn btn-primary">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentModalLabel">Uploading Talents</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form #addPost="ngForm" (ngSubmit)="onPostStudent()" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Explore Your Talents</label>
+              <input type="file" multiple  class="form-control-file" name="talents" required (change)="createPostStudent($event)" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput">Something About Post</label>
+              <input type="text" class="form-control"  #name=ngModel name="Label" [(ngModel)]="details.Label">
+            </div>
+          <div class="modal-footer">
+            <button type="button" type="reset"   class="btn btn-secondary" >Reset</button>
+            <button type="button" type="submit"  class="btn btn-primary">Save changes</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

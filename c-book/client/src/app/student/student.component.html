@@ -1,0 +1,22 @@
+<html>
+  <body>
+<div class="content" role="main">
+    <app-header></app-header>
+</div>
+
+  <div class="box">
+  <form class="box" #loginForm=ngForm (ngSubmit)="onLogin(loginForm)">
+    <h1>Student Login</h1>
+    
+      <input type="text" #name=ngModel [(ngModel)]="studServe._id" name="EmailId" placeholder="Username">
+      <input type="password" #name=ngModel [(ngModel)]="studServe.Password" name="Password" placeholder="Password">
+    
+      <input type="submit" name="" value="Login">
+      
+    <a href="/student/forgot" tabindex="5" class="forgot-password">Forgot Password?</a><br/>
+    <a href="/student/register" tabindex="5" class="forgot-password">Register here</a>
+  </form>
+</div>
+    </body>
+    </html>
+    

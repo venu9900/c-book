@@ -1,0 +1,175 @@
+<div>
+    <div class="toolbar" role="banner">
+        <img
+        width="30"
+        height="30"
+          alt="Angular Logo"
+          src="logo1.ico"
+        />
+        <span>Welcome</span>
+        <div style="margin-left: 300px;"><h4><b style="font-style:oblique;">Admin Section</b></h4></div>
+        <div class="spacer"></div>
+    </div>
+    </div>
+<div>
+<div class="sidebar">
+<ul>
+    <li><a class="active" href="admin/dashboard#home" (click)="home();">Home</a></li>
+    <li><a  href="admin/dashboard#college" (click)="college();">College</a></li>
+    <li><a  href="admin/dashboard#student" (click)="student();">Student</a></li>
+    <li><a href="admin/dashboard#staff" (click)="staff();">Staff</a></li>
+</ul>
+</div>
+<div style="margin-left: 500px;"></div>
+<div class="content" id="home" *ngIf="select.home" >
+    <form style="margin-left: 320px;margin-top:40px;" *ngIf="!select.login" #loginForm=ngForm (ngSubmit)="onLogin(loginForm)">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="adServe._id" name="EmailId" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="adServe.Password" name="Password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h2 *ngIf="select.login">Welcome.. {{adServe._id}}</h2>
+    <h3 *ngIf="select.login">Now You Can Access Everything</h3>
+    <button *ngIf="select.login" type="submit" class="btn btn-primary" (click)="logOut()">Logout</button>
+</div>
+
+<div class="content" id="college" *ngIf="select.college">
+    <div class="row heading">
+        <h4><b>College Maintenance</b></h4>
+    </div>
+    <div class="row button">
+        <button class="btn btn-success" (click)="ConfirmClg();">Confirm Colleges</button>
+        <button class="btn btn-success" (click)="ShowClg();">View Colleges</button>
+        <button class="btn btn-success" (click)="AddList();">Add College to List</button>
+    </div>
+    <br/>
+    <div class="line-divider" style="margin-top: 10px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    <div class="line-divider" style="margin-top: 2px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    <table class="table table-striped" style="margin-top: 40px;" *ngIf="select.showClg">
+        <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Profile</th>
+               <th scope="col">College Code</th>
+               <th scope="col">College Name</th>
+               <th scope="col">EmailId</th>
+               <th scope="col">Contact No.</th>
+               <th scope="col">Action</th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr *ngFor="let det of names;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td><img src={{profiles[i]}} width="45px" height="40px" style="border-radius: 50%;"></td>
+                <td>{{codes[i]}}</td>
+                <td>{{names[i]}}</td>
+                <td>{{email[i]}}</td>
+                <td>{{contacts[i]}}</td>
+                <td ><i class="fa fa-trash" aria-hidden="true" (click)="delete(i)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-striped" style="margin-top: 40px;" *ngIf="select.confirm">
+        <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Profile</th>
+               <th scope="col">College Code</th>
+               <th scope="col">College Name</th>
+               <th scope="col">EmailId</th>
+               <th scope="col">Contact No.</th>
+               <th scope="col">Action</th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr *ngFor="let det of names;index as i">
+                <th scope="row table">{{i+1}}</th>
+                <td><img src={{profiles[i]}} width="45px" height="40px" style="border-radius: 50%;"></td>
+                <td>{{codes[i]}}</td>
+                <td>{{names[i]}}</td>
+                <td>{{email[i]}}</td>
+                <td>{{contacts[i]}}</td>
+                <td ><i class="fa fa-check" aria-hidden="true" (click)="confirm(i)" ></i>
+                    &nbsp;
+                    <i class="fa fa-eye" aria-hidden="true" (click)="view(i)" ></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="content" id="home" *ngIf="select.addlst" style="margin-left:300px;">
+        <form style="margin-left: 400px;margin-top:40px;" #addList=ngForm (ngSubmit)="onAdd(addList)">
+            <div class="form-group">
+              <label for="exampleInputEmail1">College Code</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="adServe.code" name="code" >
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">College Name</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" [(ngModel)]="adServe.name" name="name">
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>     
+    </div>
+    <table class="table table-striped" *ngIf="select.addlst">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">College Code</th>
+                <th scope="col">College Name</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let clg of name;index as i">
+            <td>{{i+1}}</td>
+            <td>{{code[i]}}</td>
+            <td>{{clg}}</td>
+        </tr>
+
+    </table>
+
+</div >
+
+
+
+<div class="content" id="student" *ngIf="select.student">
+    <div class="row heading">
+        <h4><b>Student Maintenance</b></h4>
+    </div>
+    <div class="row button">
+        <button class="btn btn-success" (click)="ConfirmClg();">Confirm Colleges</button>
+        <button class="btn btn-success" (click)="ShowClg();">View Colleges</button>
+        <button class="btn btn-success" (click)="AddList();">Add College to List</button>
+    </div>
+    <div class="line-divider" style="margin-top: 10px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    <div class="line-divider" style="margin-top: 2px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    
+</div>
+
+<div class="content" id="student" *ngIf="select.staff">
+    <div class="row heading">
+        <h4><b>Staff Maintenance</b></h4>
+    </div>
+    <div class="row button">
+        <button class="btn btn-success" (click)="ShowClg();">Confirm Colleges</button>
+        <button class="btn btn-success" (click)="ShowClg();">View Colleges</button>
+        <button class="btn btn-success" (click)="ShowClg();">Add College to List</button>
+    </div>
+    <div class="line-divider" style="margin-top: 10px;">
+        <!-- <span class="line"></span> -->
+    </div>
+    <div class="line-divider" style="margin-top: 2px;">
+        <!-- <span class="line"></span> -->
+    </div>
+</div>
+</div>

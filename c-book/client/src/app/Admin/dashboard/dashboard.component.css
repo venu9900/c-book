@@ -1,0 +1,82 @@
+.toolbar{
+  background: -webkit-linear-gradient(left, #3498db, #8811c5);
+  font-size: 14px;
+}
+a:active{
+  display: inline;
+}
+.line-divider{
+  border-bottom: rgb(187, 86, 86) 2pt solid;
+  width: 100%;
+}
+
+.button{
+  padding-top: 10px;
+}
+.button .btn{
+  margin: 4px;
+
+}
+.table i{
+  cursor: pointer;
+  margin: 2px;
+  border: rgb(161, 28, 28) 2pt solid;
+  color: green;
+  border-radius: 20%;
+}
+
+.sidebar {
+  margin-top: 52px;
+  position:fixed;
+  width: 200px;
+  background-color: #7cbbe6;
+  height: 100%;
+  overflow: auto;
+}
+ul{
+  padding-left: 0;
+}
+ul li{
+  list-style-type: none;
+}
+
+.sidebar a {
+  display: block;
+  color:black;
+  font-weight: bold;
+  padding: 16px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  color: white;
+  background-color: green;
+}
+
+.sidebar ul li:hover:not(.active) {
+  background-color:white;
+  color: white;
+}
+
+div.content {
+  margin-left: 300px;
+  position: fixed;
+  /* height: 1000px; */
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}

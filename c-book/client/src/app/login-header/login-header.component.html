@@ -1,0 +1,177 @@
+<body>
+    <!-- College Header -->
+<div class="navb" *ngIf=details.college>
+    <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark">
+        <div class="navbar-header d-flex col">
+            <a class="navbar-brand" href=""><i class="fa fa-cube"></i><b>C-Book</b></a>  		
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+                <span class="navbar-toggler-icon"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div class="topEle">
+              <h4 style="color: white;"><b>Social Media For Colleges..</b></h4>
+            <!-- <form class="navbar-form form-inline">
+                <div class="input-group search-box">								
+                    <input type="text" id="search" class="form-control" placeholder="Search here...">
+                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                </div>
+            </form> -->
+            </div>
+            <div class="OtherEle">
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <li class="nav-item active"><a class="nav-link"><i class="fa fa-home"></i><span>Home</span></a></li>
+                <li class="nav-item" data-toggle="modal" data-target="#confirmStaff"><a class="nav-link"><i class="fa fa-user"></i><span>Confirm Staff</span></a></li>
+                <li class="nav-item" data-toggle="modal" data-target="#confirmStudent"><a class="nav-link"><i class="fa fa-graduation-cap"></i><span>Confirm Students</span></a></li>
+                <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+                <li class="nav-item img-last" >
+                <img src={{messages.profileImage}} class="avatar" alt="Avatar" > <b class="caret" >{{messages.Name}}</b></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+</div>
+<!-- Staff Header -->
+<div class="navb" *ngIf=details.staff>
+  <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark">
+      <div class="navbar-header d-flex col">
+          <a class="navbar-brand" href=""><i class="fa fa-cube"></i><b>C-Book</b></a>  		
+          <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+      </div>
+      <!-- Collection of nav links, forms, and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+          <div class="topEle">
+            <h4 style="color: white;"><b>Social Media For Colleges..</b></h4>
+            <!-- <form class="navbar-form form-inline">
+              <div class="input-group search-box">								
+                  <input type="text" id="search" class="form-control" placeholder="Search here...">
+                  <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+              </div>
+          </form> -->
+          </div>
+          <div class="OtherEle">
+          <ul class="nav navbar-nav navbar-right ml-auto">
+              <li class="nav-item active"><a class="nav-link"><i class="fa fa-home"></i><span>Home</span></a></li>
+              <li class="nav-item"><a href="" class="nav-link"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+              <li class="nav-item img-last" >
+              <img src={{messages.profileImage}} class="avatar" alt="Avatar" > <b class="caret" >{{messages.Name}}</b></li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+</div>
+
+<div class="navb" *ngIf='details.student'>
+  <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark">
+      <div class="navbar-header d-flex col">
+          <a class="navbar-brand" href=""><i class="fa fa-cube"></i><b>C-Book</b></a>  		
+          <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+      </div>
+      <!-- Collection of nav links, forms, and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+          <div class="topEle">
+            <h4 style="color: white;"><b>Social Media For Colleges..</b></h4>
+            <!-- <form class="navbar-form form-inline">
+              <div class="input-group search-box">								
+                  <input type="text" id="search" class="form-control" placeholder="Search here...">
+                  <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+              </div>
+          </form> -->
+          </div>
+          <div class="OtherEle">
+          <ul class="nav navbar-nav navbar-right ml-auto">
+              <li class="nav-item active"><a class="nav-link"><i class="fa fa-home"></i><span>Home</span></a></li>
+              <li class="nav-item active"><a href="home/#studentBlog" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i><span>Student Blog</span></a></li>
+              <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#studentNotes"><i class="fa fa-book" aria-hidden="true"></i><span>Notes</span></a></li>
+              <li class="nav-item"><a class="nav-link"><i class="fa fa-bell"></i><span>Notifications</span></a></li>
+              <li class="nav-item img-last" >
+              <img src={{messages.profileImage}} class="avatar" alt="Avatar" > <b class="caret" >{{messages.Name}}</b></li>
+          </ul>
+      </div>
+      </div>
+  </nav>
+</div>
+
+
+<div class="modal fade" id="confirmStudent" tabindex="-1" role="dialog" aria-labelledby="confirmStudentTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmStudentTitle">Confirm Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="label-names">
+                <p class="names"  *ngFor="let std of homeService.students">{{std.Name}} is registered with {{std._id}}
+                    <button class="action-btn" (click)="DoneStudent(std._id)"><i class="fa fa-check done" aria-hidden="true"></i></button>
+                    <button class="action-btn"><i class="fa fa-times cancel" aria-hidden="true"></i></button>
+                </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirmStaff" tabindex="-1" role="dialog" aria-labelledby="confirmStaffTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmStaffTitle">Confirm Staff</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="label-names">
+                <p class="names" *ngFor="let stf of homeService.staffs" > {{stf.Name}} is registered with {{stf._id}}
+                    <button class="action-btn" (click)="DoneStaff(stf._id)"><i class="fa fa-check done" aria-hidden="true"></i></button>
+                    <button class="action-btn" ><i class="fa fa-times cancel" aria-hidden="true"></i></button>
+                </p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="studentNotes" tabindex="-1" role="dialog" aria-labelledby="studentNotesTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="studentNotesTitle">Download References</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="label-names" *ngFor="let cnt of cnts;index as i">
+                <h5 class="author"><b>Author Name: </b>{{names[i]}}</h5>
+                <div *ngFor="let l of label[i];index as j">
+                  <label class="title"><b>Title: </b>{{l}}</label>
+                  <div *ngFor="let pdf of profile[i][j];index as k">
+                    <label class="col-sm-10"><b>File name :</b>{{pdf}}</label>
+                    <button class="action-btn download col-sm-2" (click)="downloads(pdf);"><i class="fa fa-download" aria-hidden="true"></i></button>
+                  </div> 
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

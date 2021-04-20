@@ -1,0 +1,66 @@
+<div class="content" role="main">
+    <app-header></app-header>
+<body>
+<!------ Include the above in your HEAD tag ---------->
+<form #clgForm="ngForm" (ngSubmit)="onRegister(clgForm)">
+<div class="container register-form">
+            <div class="form">
+                <div class="box">
+                <div class="note" *ngIf="msgs.showForm">
+                    <h1>College Registration..!</h1>
+                </div>
+                
+                <div class="form-content" *ngIf="msgs.showForm">
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group" id="texts">
+                                <label class="label">College Name:</label>
+                                <select  #name=ngModel [(ngModel)]="FormData.clgName"  name="collegeName">
+                                    <option  disabled>Select Your College</option>
+                                    <option value={{names[i]}} *ngFor="let clg of names;index as i">{{names[i]}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="label">Email Id:</label>
+                                <input  type="text" #name=ngModel name="CollegeEmail" [(ngModel)]="FormData.CollegeEmail"  placeholder="Email Id" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label class="label">Contact Number:</label>
+                                <input  type="text" #name=ngModel name="PhoneNumber" [(ngModel)]="FormData.Phone"  placeholder="College Contact Number" value=""/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label">College Code:</label>
+                                <input  type="text" #name=ngModel name="collegeCode" [(ngModel)]="FormData.collegeCode" placeholder="College Code" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label class="label">Principle EmailId:</label>
+                                <input type="text" #name=ngModel name="PrincipleId" [(ngModel)]="FormData.PrincipleId" placeholder="Principle Email Id" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label class="label">Password:</label>
+                                <input type="password" #name=ngModel name="Password" [(ngModel)]="FormData.Password" placeholder="Password" value=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit"   value="Register"/>
+                </div>
+                <div class="row"  *ngIf="msgs.showMsg">
+                    <div class="note">
+                        <h1>Registration Status</h1>
+                    </div>
+                    <div class="col-xs-12" style="margin-top: 40px;margin-left: -100px;">
+                          <strong ><label class="alert alert-success" *ngIf="msgs.serverErrorMessages">{{msgs.serverErrorMessages}}</label><br>
+                          </strong>
+                      <p *ngIf="msgs.showMsgAll">
+                          <strong>A verification Email is sent to your college EmailId..</strong><br>
+                          <strong>We will send you an confirmation mail once they verified.. <span>Thank You</span></strong>
+                      </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>

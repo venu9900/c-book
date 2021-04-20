@@ -1,0 +1,285 @@
+div.profile-grp{
+    /* border-right: royalblue solid 2pt; */
+    height: 500px;
+    left: 0;
+    /* position: fixed; */
+    overflow: hidden;
+}
+
+div.events{
+  /* border: blue solid 2pt; */
+  /* height: 400px; */
+  /* position: fixed; */
+  right: 0;
+  width: 80%;
+}
+div.content{
+    /* border: rgb(187, 86, 86) 2pt solid; solid 2pt; */
+    /* height: 1500px; */
+    /* position: absolute; */
+    overflow-y: scroll; 
+  }
+.main{
+    margin-top: 120px;
+    overflow: hidden;
+}
+
+.content{
+  margin: 0;
+}
+/*  */
+.column {
+  float: left;
+  width: 50%;
+  padding: 7px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+
+
+
+
+/***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+  /* Profile container */
+  .profile {
+    margin: 30px 0;
+  }
+  
+  .profile-userpic img {
+    width: 50%;
+    height: 30%;
+    border-radius: 50% ;
+    margin: 10%;
+    margin-left: 25%;
+  }
+  .profile-userpic-view img {
+    width: 45%;
+    height: 15%;
+    border-radius: 50% ;
+    margin: 10%;
+    margin-left: 25%;
+  }
+  .profile-usertitle-view {
+    margin-top: 20px;
+  }
+
+  .filter label{
+    margin-left: -120px;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+  .filter select{
+    height: 25px;
+
+  }
+  .filter .searchf{
+    /* padding-left: 10px; */
+    margin-left: 15px;
+    margin-top: -4px;
+  }
+  
+  .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .title1{
+    margin-right: 100px;
+  }
+  
+  .profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+  }
+  .profile-usertitle-name-view {
+    color: #5a7391;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  
+  .profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+  }
+  
+  .profile-userbuttons .btn-info {
+    color: rgb(14, 10, 13);
+    font-size: 18px;
+  }
+
+  .profile-userbuttons .btn-info {
+    background: none;
+    border:none;
+    padding: 4%;
+    margin: 5%;
+    border-right: 2pt solid slategrey;
+    border-left: 2pt solid slategrey;
+    border-top: 2pt solid slategrey;
+    border-bottom: 2pt solid slategrey;
+
+  }
+
+  .profile-userbuttons .btn-info i:hover{
+    font-size: 28px;
+    color: violet;
+    }
+
+  /* .content .profile-top{
+     height: 20%;
+    background-color: #926dde;
+  } */
+  .search .searchb{
+    margin-top: -3px;
+    margin-left: 5px;
+  }
+  .search label{
+    margin-right: 5px;
+  }
+  .post-text .btn-picture i{
+    padding: 5px;
+    color: rgb(32, 88, 139);
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .post-text .btn-picture{
+    border: rgb(32, 88, 139) 2pt solid;
+    margin-top: -2px;
+    margin-left: 50px;
+    width: 130px;
+    border-radius: 24px;
+    background-color: snow;
+  }
+
+  .line-divider{
+    border-bottom: rgb(187, 86, 86) 2pt solid;
+    width: 538px;
+  }
+  .line-divider1{
+    border-bottom: rgb(187, 86, 86) 2pt solid;
+    width: 420px;
+  }
+
+  
+  .post .btn-picture span{
+    position: relative;
+    font-size: 15px;
+  }
+  .profile-top b{
+    font-size: medium;
+    margin-top: 4px;
+  }
+
+  .user-pics .profile-userpic {
+    border-radius: 50%;
+    height: 110px;
+    width: 80px;
+  }
+  .user-pics1 .profile-userpic .profile1{
+    border-radius: 50%;
+    height: 45px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 6px;
+  }
+  .info-container{
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 538px;
+    border: rgb(92, 91, 89) 3pt solid;
+  }
+  .info-container1{
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 420px;
+    border: rgb(92, 91, 89) 3pt solid;
+  }
+  .info-contain{
+    margin-top: 20px;
+    padding-top: 10px;
+    width: 420px;
+  }
+  .info-container .user-pics1 .profile-userpic{
+    padding-right: 0px;
+  }
+
+  .info-container .user-pics .title{
+    padding-top: 10px;
+    padding-left: 0px;
+  }
+  .info-container1 .user-pics1 .title{
+    padding-top: 10px;
+    padding-left: 0px;
+  }
+
+  .info-container .user-pics .title .time{
+    padding-top: 0px;
+    margin-left: 0px;
+    font-size: small;
+  }
+  .info-container1 .user-pics1 .title .time{
+    padding-top: 0px;
+    margin-left: 0px;
+    font-size: small;
+  }
+  .info-container .user-pics .line-brk{
+    border-bottom: black 2pt solid;
+  }
+
+  .user-pics{
+    margin-bottom: -50px;
+  }
+
+  .img-section .image{
+    width: 100%;
+    height: 40%;
+  }
